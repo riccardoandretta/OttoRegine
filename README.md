@@ -2,7 +2,7 @@ Data una schacchiera 8x8
 posizionare 8 regine degli scacchi
 in modo che non si possano mangiare tra di loro
 
-
+```
 |---|---|---|---|
 |   | Q |   |   |
 |---|---|---|---|
@@ -12,6 +12,7 @@ in modo che non si possano mangiare tra di loro
 |---|---|---|---|
 |   |   | Q |   | 
 |---|---|---|---|
+```
 
 Soluzione parziale= lista di numeri (colonne) tra 0 e N-1
 
