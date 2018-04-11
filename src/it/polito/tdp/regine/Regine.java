@@ -36,18 +36,20 @@ public class Regine {
 	 *            riga a cui deve lavorare la ricorsione
 	 */
 	private boolean cerca(List<Integer> scacchiera, int N, int livello) {
+		// ritornando un boolean faccio sì che mi fermi alla prima soluzione trovata
 
 		if (livello == N) {
 			// caso terminale, soluzione trovata
 			return true;
 		}
 
-		for (int mossa = 0; mossa < N; mossa++) {
-			if (posizioneSicura(scacchiera, livello, N, mossa)) {
+		for (int mossa = 0; mossa < N; mossa++) { // mosse possibili sono tutte le colonne della scacchiera
+			if (posizioneSicura(scacchiera, livello, N, mossa)) { // ma non tutte le devo provare
 				scacchiera.add(mossa);
-				if (cerca(scacchiera, N, livello + 1))
+				if (cerca(scacchiera, N, livello + 1)) // allora continuo la procedura
 					return true;
-				scacchiera.remove(livello);
+				scacchiera.remove(livello); // nel momento in cui ho trovato la sol non faccio più nemmeno il backtrack,
+											// esco immediatamente (se lo facessi distruggerei la soluzione trovata)
 			}
 		}
 		return false;
@@ -55,17 +57,17 @@ public class Regine {
 
 	private boolean posizioneSicura(List<Integer> scacchiera, int livello, int n, int mossa) {
 
-		for (int riga = 0; riga < livello; riga++) {
+		for (int riga = 0; riga < livello; riga++) { // ciclo fra tutte le righe precedenti
 
-			// colonne
+			// stasse colonna
 			if (scacchiera.get(riga) == mossa)
 				return false;
 
-			// diagonale dx
+			// stessa diagonale dx
 			if (riga - scacchiera.get(riga) == livello - mossa)
 				return false;
 
-			// diagonale sx
+			// stessa diagonale sx
 			if (riga + scacchiera.get(riga) == livello + mossa)
 				return false;
 
