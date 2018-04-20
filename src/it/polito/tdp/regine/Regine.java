@@ -20,7 +20,6 @@ public class Regine {
 		} else {
 			return null;
 		}
-
 	}
 
 	/**
@@ -38,7 +37,7 @@ public class Regine {
 	private boolean cerca(List<Integer> scacchiera, int N, int livello) {
 		// ritornando un boolean faccio sì che mi fermi alla prima soluzione trovata
 
-		if (livello == N) {
+		if (livello == N) { // so di quanti elementi è composta, quindi mi fermo lì perchè è impossibile andare oltre
 			// caso terminale, soluzione trovata
 			return true;
 		}
@@ -47,7 +46,7 @@ public class Regine {
 			if (posizioneSicura(scacchiera, livello, N, mossa)) { // ma non tutte le devo provare
 				scacchiera.add(mossa);
 				if (cerca(scacchiera, N, livello + 1)) // allora continuo la procedura
-					return true;
+					return true; 			// lascio la scacchiera così com'è nel momento in cui ho trovato la sol
 				scacchiera.remove(livello); // nel momento in cui ho trovato la sol non faccio più nemmeno il backtrack,
 											// esco immediatamente (se lo facessi distruggerei la soluzione trovata)
 			}
@@ -85,7 +84,7 @@ public class Regine {
  * 
  * 
  * 
- * [Q] --> R2=livello, C2=mossa
+ * 			[Q] --> R2=livello, C2=mossa
  * 
  * Diagonale destra: R1-C1 == R2-C2
  * 
